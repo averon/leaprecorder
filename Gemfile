@@ -9,6 +9,7 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'jquery-rails'
 gem 'jbuilder', '~> 2.0'
 gem 'angularjs-rails'
+gem 'angularjs-rails-resource'
 gem 'bootstrap-sass-rails'
 
 gem 'sdoc', '~> 0.4.0', group: :doc

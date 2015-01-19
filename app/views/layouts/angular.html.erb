@@ -3,12 +3,12 @@
 <head>
   <meta charset="utf-8">
   <title>LeapRecorder</title>
+  <base href="/">
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <div class="container" ng-controller="Controls">
-    <h1>Leap Recorder</h1>
+  <div id="main" class="container" ng-view>
   </div>
 
   <%= javascript_include_tag 'application' %>

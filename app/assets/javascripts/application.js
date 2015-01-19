@@ -10,7 +10,11 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require lazy
 //= require angular
+//= require angular-route
+//= require angular-resource
+//= require angularjs/rails/resource
 //= require three
 //= require leap
 //= require leap-plugins
