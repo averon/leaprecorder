@@ -20,6 +20,3 @@ angular.module('lmr', [
   $locationProvider.html5Mode(true);
 })
 
-Leap.loop({})
-  .use('riggedHand');
-window.controller = Leap.loopController;

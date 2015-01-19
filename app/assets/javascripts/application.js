@@ -11,6 +11,9 @@
 // about supported directives.
 //
 //= require lazy
+//= require lz-string
+//= require jquery
+//= require jquery_ujs
 //= require angular
 //= require angular-route
 //= require angular-resource
@@ -19,4 +22,22 @@
 //= require leap
 //= require leap-plugins
 //= require leap.rigged-hand
+//= require leap.playback
+//
+//= require FileSaver
+//= require spin.min
+//= require angular.rangeSlider
+//= require angular-spinner.min
+//= require angulartics.min
+//= require angulartics-ga.min
+//= require xeditable.min
+//= require highlight.pack
+//= require TrackballControls
+//
+//= require leap-recorder/recorder
+//= require leap-recorder/controls
+//= require leap-recorder/data-collection
+//= require leap-recorder/metadata
+//
 //= require_tree .
+
