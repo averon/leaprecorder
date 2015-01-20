@@ -3,6 +3,15 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   after_filter :set_csrf_cookie_for_ng
+  helper_method :recordings, :recording
+
+  def recordings
+    @recordings ||= Recording.all
+  end
+
+  def recording
+    Recording.find_by_id(params[:id])
+  end
 
   def set_csrf_cookie_for_ng
     cookies['XSRF-TOKEN'] = form_authenticity_token if protect_against_forgery?

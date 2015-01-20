@@ -19,6 +19,16 @@ class Api::RecordingsController < ApplicationController
     end
   end
 
+  def update
+    @recording = Recording.find_by_id(params[:id])
+    
+    if @recording.save
+      render json: @recording.to_json
+    else
+      render json: @recording.errors.to_json
+    end
+  end
+
   private
 
   def recording_params

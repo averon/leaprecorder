@@ -101,11 +101,16 @@
 
 
   <div class="btn-group btn-group-lg dropup" style="text-align: left;">
-    <button type="button" class="btn btn-default" ng-click="save()">Download</button>
-    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+    <% if recording %>
+      <button type="button" class="btn btn-primary" ng-click="update(<%= recording.id %>)"ng-disabled="canPlayBack()">Update</button>
+    <% else %>
+      <button type="button" class="btn btn-primary" onclick="$('#recordingModal').modal('show')" ng-disabled="canPlayBack()">Save</button>
+    <% end %>
+    <button type="button" class="btn btn-default" ng-click="save()" ng-disabled="canPlayBack()">Download</button>
+    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" ng-disabled="canPlayBack()">
       <span class="caret"></span>
     </button>
-    <ul class="dropdown-menu" role="menu">
+    <ul class="dropdown-menu pull-right" role="menu">
       <li><a href="#" ng-click="save()"><b>Compressed</b></a></li>
       <li><a href="#" ng-click="save('json')">As JSON</a></li>
     </ul>
@@ -118,6 +123,18 @@
     </a>
   </div>
 
+</div>
+
+<div class="modal fade" id="recordingModal" tabindex="-1" ng-controller="Controls">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-body">
+        <input type="text" placeholder="Recording name" class="form-control" id="recording-name" ng-model="recordingName">
+        <br/>
+        <button type="button" class="btn btn-primary" ng-click="create()" onclick="$('#recordingModal').modal('hide')">Save</button>
+      </div>
+    </div>
+  </div>
 </div>
 
 <!--
@@ -255,7 +272,6 @@
 <script>hljs.initHighlightingOnLoad();</script>
 
 <script>
-
   (window.controller = new Leap.Controller({background: true}))
     .use('playback', {
       loop: false,
@@ -265,7 +281,6 @@
     .use('riggedHand')
     .connect();
 
-
 //  controls = new THREE.TrackballControls( window.controller.plugins.riggedHand.camera )
 //  controller.on('frame', function(){
 //    controls.update()
@@ -273,7 +288,6 @@
 //  window.addEventListener( 'resize', function(){
 //    controls.handleResize();
 //  });
-
 </script>
 
 <script>

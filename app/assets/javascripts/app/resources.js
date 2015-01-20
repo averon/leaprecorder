@@ -1,4 +1,4 @@
-angular.module('lmr.resources', ["rails"])
+window.recorder
   .factory('Recording',
     function(railsResourceFactory, $q) {
       return railsResourceFactory({
