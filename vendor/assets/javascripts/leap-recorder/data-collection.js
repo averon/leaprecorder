@@ -2,15 +2,7 @@
   window.recorder.controller('DataCollection', [
     '$scope', function($scope) {
       var dropArea;
-      $scope.recordings = [
-        {
-          url: 'recordings/pinch-57fps.json.lz'
-        }, {
-          url: 'recordings/HandSplay-110fps.json.lz'
-        }, {
-          url: 'recordings/Waiting-110fps.json.lz'
-        }
-      ];
+      $scope.recordings = [{}];
       $scope.title = function() {
         if ($scope.currentRecording().metadata) {
           return $scope.currentRecording().metadata.title;
