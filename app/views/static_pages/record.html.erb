@@ -1,10 +1,3 @@
-<!DOCTYPE HTML>
-<html>
-<head>
-  <title>Leap Recorder</title>
-</head>
-<body ng-app="Recorder">
-
 <!-- handle html5 file drag/drop -->
 <div id="dropzone">
   <span>
@@ -68,7 +61,7 @@
 
   <div class="btn-group btn-group-lg dropup">
 
-    <button type="button" class="btn btn-default" ng-click="record()" ng-class="{active: mode=='record'}" id="record">
+    <button type="button" class="btn btn-default" ng-click="record()" ng-class="{active: mode=='record'}" id="record" ng-disabled="loaded">
 
       <i class="glyphicon glyphicon-record" ng-class="{orange: recordPending(), red: recording()}"></i>
 
@@ -101,11 +94,8 @@
 
 
   <div class="btn-group btn-group-lg dropup" style="text-align: left;">
-    <% if recording %>
-      <button type="button" class="btn btn-primary" ng-click="update(<%= recording.id %>)"ng-disabled="canPlayBack()">Update</button>
-    <% else %>
-      <button type="button" class="btn btn-primary" onclick="$('#recordingModal').modal('show')" ng-disabled="canPlayBack()">Save</button>
-    <% end %>
+    <button type="button" class="btn btn-primary" onclick="$('#saveRecording').modal('show')" ng-if="!loaded" ng-disabled="canPlayBack()">Save</button>
+    <button type="button" class="btn btn-primary" ng-click="update()" ng-if="loaded">Update</button>
     <button type="button" class="btn btn-default" ng-click="save()" ng-disabled="canPlayBack()">Download</button>
     <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" ng-disabled="canPlayBack()">
       <span class="caret"></span>
@@ -125,17 +115,6 @@
 
 </div>
 
-<div class="modal fade" id="recordingModal" tabindex="-1" ng-controller="Controls">
-  <div class="modal-dialog modal-sm">
-    <div class="modal-content">
-      <div class="modal-body">
-        <input type="text" placeholder="Recording name" class="form-control" id="recording-name" ng-model="recordingName">
-        <br/>
-        <button type="button" class="btn btn-primary" ng-click="create()" onclick="$('#recordingModal').modal('hide')">Save</button>
-      </div>
-    </div>
-  </div>
-</div>
 
 <!--
  Bootstrap requires tabindex=-1 for escape key :-/
@@ -269,6 +248,19 @@
   </div>
 </div>
 
+<div class="modal fade" id="saveRecording" tabindex="-1" ng-controller="Controls">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-body">
+        <input type="text" placeholder="Recording name" class="form-control" id="recording-name" ng-model="name">
+        <br/>
+        <button type="button" class="btn btn-primary" ng-click="create()" onclick="$('#saveRecording').modal('hide')">Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 <script>hljs.initHighlightingOnLoad();</script>
 
 <script>
@@ -302,6 +294,3 @@
   ga('send', 'pageview');
 
 </script>
-
-</body>
-</html>

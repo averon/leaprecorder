@@ -20,3 +20,7 @@ group :development, :test do
   gem 'pry-rails'
   gem 'quiet_assets'
 end
+
+group :production do
+  gem 'rails_12factor'
+end

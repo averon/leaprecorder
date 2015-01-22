@@ -7,9 +7,9 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
+<body ng-app="Recorder">
 
-  <div id="main-nav" class="navbar navbar-default">
+  <div id="main-nav" class="navbar navbar-default" data-ng-controller="Recordings">
     <div class="container-fluid">
       <div class="navbar-header">
         <a class="navbar-brand" href="http://www.leapmotion.com/">
@@ -21,17 +21,17 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">Recordings <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <% recordings.each do |recording| %>
-              <li><a href="<%= recording.id %>"><%= recording.name %></a></li>
-            <% end %>
+            <li ng-repeat="recording in recordings">
+              <a href="{{ recording.id }}">{{ recording.name }}</a>
+            </li>
           </ul>
         </li>
-        <p class="navbar-text navbar-right"><%= recording.name if recording %></p>
+        <p class="navbar-text navbar-right" ng-if="recording">{{ recording.name }}</p>
       </ul>
     </div>
   </div>
 
-<%= yield %>
+  <%= yield %>
 
 </body>
 </html>
