@@ -22,7 +22,7 @@
       '$rootScope',
       '$location',
       'Recording',
-      'RecordingCompressor'
+      'RecordingCompressor',
       function($rootScope, $location, Recording, RecordingCompressor) {
         var service = this;
         this._currentRecording = null; 
