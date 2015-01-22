@@ -7,7 +7,7 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-<body ng-app="Recorder">
+<body ng-app="Recorder" ng-strict-di>
 
   <div id="main-nav" class="navbar navbar-default" data-ng-controller="Recordings">
     <div class="container-fluid">
